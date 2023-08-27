@@ -55,15 +55,12 @@ public class EquipmentController {
 	
 	@GetMapping("/delete-equipment/{equipmentId}")
 	public String deleteEquipment(@PathVariable int equipmentId) {
-	    // Check if the equipment exists
 	    Optional<Equipment> optionalEquipment = equipmentRepository.findById(equipmentId);
 
 	    if (optionalEquipment.isPresent()) {
-	        // Equipment exists, delete it
 	        equipmentRepository.deleteById(equipmentId);
 	        return "Equipment deleted successfully!";
 	    } else {
-	        // Equipment not found
 	        return "Equipment not found.";
 	    }
 	}

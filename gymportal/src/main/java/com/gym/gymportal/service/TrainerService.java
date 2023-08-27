@@ -93,5 +93,19 @@ public class TrainerService {
 	public List<Trainer> getAllTrainer(){
 		return trainerRepository.findAll();
 	}
+	
+	public void deleteTrainerById(int trainerId) {
+        Optional<Trainer> trainerOptional = trainerRepository.findById(trainerId);
+
+        if (trainerOptional.isPresent()) {
+            Trainer trainer = trainerOptional.get();
+            
+            // You can also perform additional checks or logic here before deleting the trainer if needed.
+
+            trainerRepository.delete(trainer);
+        } else {
+            throw new IllegalArgumentException("Trainer not found with ID: " + trainerId);
+        }
+    }
 	}
 

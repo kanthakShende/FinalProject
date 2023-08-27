@@ -32,6 +32,7 @@ public class User {
 	private String fullName;
 	private String password;
 	private String email;
+	private String role;
 	
 	@ManyToOne
 	@JoinColumn(name = "trainerId")
@@ -59,20 +60,21 @@ public class User {
     private Set<Equipment> equipments = new HashSet<>();
 
 
-	public User(int userId, String fullName, String password, String email, Trainer trainer, Membership membership,
-			Workout workout, Suppliment suppliment, Set<Equipment> equipments) {
+	public User(int userId, String fullName, String password, String email, String role, Trainer trainer,
+			Membership membership, Workout workout, Suppliment suppliment, Set<Equipment> equipments) {
 		super();
 		this.userId = userId;
 		this.fullName = fullName;
 		this.password = password;
 		this.email = email;
+		this.role = role;
 		this.trainer = trainer;
 		this.membership = membership;
 		this.workout = workout;
 		this.suppliment = suppliment;
 		this.equipments = equipments;
 	}
-
+	
 	public User() {
 		super();
 	}
@@ -107,6 +109,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public Trainer getTrainer() {
@@ -148,6 +158,6 @@ public class User {
 	public void setEquipments(Set<Equipment> equipments) {
 		this.equipments = equipments;
 	}
-	
+
 	
 }

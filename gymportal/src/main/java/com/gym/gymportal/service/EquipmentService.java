@@ -57,4 +57,18 @@ public class EquipmentService {
 	public List<Equipment> getEquipmentList() {
 		return equipmentRepository.findAll();
 	}
+	
+	public void deleteEquipmentById(int equipmentId) {
+        Optional<Equipment> equipmentOptional = equipmentRepository.findById(equipmentId);
+
+        if (equipmentOptional.isPresent()) {
+            Equipment equipment = equipmentOptional.get();
+
+            // You can also perform additional checks or logic here before deleting the equipment if needed.
+
+            equipmentRepository.delete(equipment);
+        } else {
+            throw new IllegalArgumentException("Equipment not found with ID: " + equipmentId);
+        }
+    }
 }

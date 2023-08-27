@@ -34,4 +34,18 @@ public class WorkoutService {
         return workoutRepository.findAll();
     }
 	
+	public void deleteWorkoutById(int workoutId) {
+        Optional<Workout> workoutOptional = workoutRepository.findById(workoutId);
+
+        if (workoutOptional.isPresent()) {
+            Workout workout = workoutOptional.get();
+
+            // You can also perform additional checks or logic here before deleting the workout if needed.
+
+            workoutRepository.delete(workout);
+        } else {
+            throw new IllegalArgumentException("Workout not found with ID: " + workoutId);
+        }
+    }
+	
 }

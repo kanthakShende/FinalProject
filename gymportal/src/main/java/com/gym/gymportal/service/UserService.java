@@ -17,6 +17,7 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	public void add(User user) {
+		user.setRole("user");
 		userRepository.save(user);
 	}
 	
